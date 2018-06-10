@@ -11,7 +11,7 @@ pub struct Pixel {
 }
 
 pub struct Surface {
-  pub pixels: [Pixel; SURFACE_PIXELS],
+  pub pixels: Vec<Pixel>,
 }
 
 #[derive(Copy, Clone)]
@@ -38,7 +38,7 @@ pub struct Output {
 }
 
 pub trait Game {
-  fn new() -> Self;
+  fn new() -> Self where Self: Sized;
   fn frame(&mut self, input: Input) -> Output;
 }
 
