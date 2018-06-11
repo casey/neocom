@@ -1,0 +1,9 @@
+[package]
+name    = "neosys-native"
+version = "0.0.0"
+authors = ["Casey Rodarmor <casey@rodarmor.com>"]
+
+[dependencies]
+gl             = "0.10.0"
+glutin         = "0.16.0"
+neocom-special = {path = "../neocom-special"}

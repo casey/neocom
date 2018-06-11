@@ -1,0 +1,9 @@
+[package]
+name    = "life"
+version = "0.0.0"
+authors = ["Casey Rodarmor <casey@rodarmor.com>"]
+
+[dependencies]
+neocom-special = {path = "../../neocom-special"}
+neosys-native  = {path = "../../neosys-native"}
+
