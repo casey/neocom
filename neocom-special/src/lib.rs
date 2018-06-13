@@ -36,6 +36,7 @@ pub trait System {
 pub trait Program {
   fn new() -> Self;
   fn update(&mut self, system: &mut System);
+  fn sound(&mut [f32]) {}
   fn title(&self) -> &str {
     "ネオ・SPECIAL"
   }

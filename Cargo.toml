@@ -4,4 +4,5 @@ members = [
   "neocom-special",
   "neosys-native",
   "examples/life",
+  "examples/sync",
 ]

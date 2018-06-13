@@ -1,6 +1,7 @@
 extern crate neocom_special;
 extern crate gl;
 extern crate glutin;
+extern crate cpal;
 
 mod misc;
 
@@ -36,7 +37,41 @@ impl System for Native {
 
 use glutin:: GlContext;
 
-pub fn run<P: Program>() {
+pub fn run<P: Program> () {
+    run_audio();
+    run_graphics::<P>();
+}
+
+fn run_audio() {
+    use cpal::{StreamData, UnknownTypeOutputBuffer, EventLoop};
+    extern crate rand;
+    std::thread::spawn(|| {
+        let event_loop = EventLoop::new();
+        let device = cpal::default_output_device().expect("no output device available");
+        let mut supported_formats_range = device.supported_output_formats()
+            .expect("error while querying formats");
+        let format = supported_formats_range.next()
+            .expect("no supported format?!")
+            .with_max_sample_rate();
+        let stream_id = event_loop.build_output_stream(&device, &format).unwrap();
+        event_loop.play_stream(stream_id);
+        event_loop.run(move |_stream_id, stream_data| {
+            match stream_data {
+                StreamData::Output { buffer: UnknownTypeOutputBuffer::I16(mut buffer) } => {
+                    println!("hooray");
+                    for sample in buffer.iter_mut() {
+                        *sample = rand::random();
+                    }
+                }
+                _ => {
+                    println!("not");
+                }
+            }
+        });
+    });
+}
+
+fn run_graphics<P: Program>() {
   let mut system  = Native {
     quit:   false,
     events: vec![],

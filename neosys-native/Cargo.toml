@@ -7,3 +7,5 @@ authors = ["Casey Rodarmor <casey@rodarmor.com>"]
 gl             = "0.10.0"
 glutin         = "0.16.0"
 neocom-special = {path = "../neocom-special"}
+cpal           = "0.8.1"
+rand           = "*"
