@@ -7,4 +7,4 @@ watch:
 	cargo watch -x check
 
 life:
-	cd neocom-special && cargo run --example life
+	cd examples/life && cargo run --release

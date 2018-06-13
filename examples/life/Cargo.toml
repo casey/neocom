@@ -6,4 +6,4 @@ authors = ["Casey Rodarmor <casey@rodarmor.com>"]
 [dependencies]
 neocom-special = {path = "../../neocom-special"}
 neosys-native  = {path = "../../neosys-native"}
-
+rand           = "0.5.0"
